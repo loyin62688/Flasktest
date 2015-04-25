@@ -1,0 +1,156 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static',filename = 'dashboard.css') }}" rel="stylesheet">
+{% endblock %}
+{% block title %}sqlalchemytest{% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+            <li>
+
+        					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          				button test <span class="caret"></span>
+        					</a>
+ 					<div class="row">
+ 					<div class="col-md-offset-1 col-md-8">
+    				<div id="collapseOne" class="collapse" role="tabpanel">
+    					<ul class="nav">
+    					<li role="presentation"><a href="#">test1</a></li>
+						<li role="presentation"><a href="#">test2</a></li>
+						<li role="presentation"><a href="#">test3</a></li>
+						</ul>
+    				</div>
+					</div>
+    				</div>
+ 	 			</li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <table class="table table-bordered">
+      <caption>Optional table caption.</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for x in xlist %}
+        <tr>
+          <th scope="row">1</th>
+          <td rowspan={{ x.num }}>{{ x.key }}</td>
+          <td>{{ x.value_list[0] }}</td>
+        </tr>
+        {% for subrow in x.trowlist %}
+            <tr>
+            <th scope="row">{{ subrow }}</th>
+            <td>{{ x.value_list[loop.index] }}</td>
+            </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+
+        	<form action="http://127.0.0.1" method="post">
+        		<div class="dropdown col-md-offset-9 col-md-3">
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    				配置文件类型
+    				<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  					</ul>
+  					<select name="loyin" class="form-control">
+  						<option>mrs</option>
+  						<option>ads</option>
+  						<option>civil</option>
+  						<option>nginx</option>
+  						<option>admin</option>
+					</select>
+				</div>
+
+		  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        		 <div class="form-group col-md-3 col-md-offset-1">
+    				<label for="exampleInputFile">选择文件</label>
+    				<input type="file" id="exampleInputFile" name="inputfile">
+    				<p class="help-block">请上传您需要生成模板的原始配置文件</p>
+  				</div>
+ </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+		  		<div class="form-group">
+    				<label for="comments1" class="col-md-1 control-label">评论</label>
+    				<div class="col-md-10">
+      			<textarea class="form-control" id="comments1" name="pinglun" placeholder="必须留下提交信息" rows="3">
+      			</textarea>
+   				</div>
+  		 		</div>
+  		 		<div class="form-group">
+    				<div class="col-md-offset-1 col-md-10">
+      			<button type="submit" class="btn btn-default">提交</button>
+    				</div>
+  				</div>
+		 </div>
+		 </form>
+    </div>
+          </div>
+    </div>
+{% endblock %}
